@@ -23,6 +23,7 @@ const StyledListSongs = styled.div`
   .wrapper {
     /* width: 200px; */
     height: 160px;
+    /* position: flex; */
   }
 
   .deep2 {
@@ -38,6 +39,7 @@ const StyledListSongs = styled.div`
   }
 
   .deep3 {
+    /* position: relative; */
     width: 150px;
     height: 150px;
     border-radius: 3%;
@@ -73,6 +75,7 @@ function ListSongs() {
       <div className="wrapper">
         <div className="avatar"></div>
         <div className="deep2"></div>
+        {/* <div className="deep3"></div> */}
       </div>
 
       <div className="info">

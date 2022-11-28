@@ -7,7 +7,7 @@ const AvatarNewTrack = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  /* background-color: #000; */
+  /* TODO: background-color: #000; */
   background-size: cover;
 
   .aaa {

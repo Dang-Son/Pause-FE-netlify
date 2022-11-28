@@ -5,7 +5,7 @@ const StyledListArtist = styled.div`
   /* position: flex; */
   width: 100%;
   height: 60px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 
 const StyledAvatar = styled.div`
@@ -23,17 +23,17 @@ const StyledArtist = styled.div`
   display: inline-block;
   padding-left: 7px;
   height: 50px;
-  /* justify-content: center; */
-  transform: translateY(-15%);
+  justify-content: center;
+  /* transform: translateY(-15%); */
 `;
 
 const StyledBtnFollow = styled.button`
   width: auto;
   height: 30px;
   justify-content: center;
-
+  /* float: right; */
   /* border-radius: 50%; */
-  /* transform: translateY(-20%); */
+  transform: translateX(150%);
 `;
 
 function ArtistYouShouldFollow() {

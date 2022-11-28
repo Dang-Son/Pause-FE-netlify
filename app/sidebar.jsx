@@ -10,7 +10,7 @@ const StyledNewTrack = styled.div`
   }
   li {
     display: inline-block;
-    margin: 15px 25px 15px 0;
+    margin: 15px 20px 15px 0;
   }
   ul {
     padding: 0%;

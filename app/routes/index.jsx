@@ -114,6 +114,29 @@ function Index() {
             </ul>
           </div>
         </StyledMoreSong>
+
+        <StyledMoreSong>
+          <div className="fs-3 fw-semibold">Top songs</div>
+          <div className="section">
+            <ul>
+              <li>
+                <ListSongs />
+              </li>
+              <li>
+                <ListSongs />
+              </li>
+              <li>
+                <ListSongs />
+              </li>
+              <li>
+                <ListSongs />
+              </li>
+              <li>
+                <ListSongs />
+              </li>
+            </ul>
+          </div>
+        </StyledMoreSong>
       </StyledLeftSide>
 
       <StyledRightSide>
