@@ -1,0 +1,1 @@
+export const IMAGE_PLACEHOLDER_LINK = "https://picsum.photos/500"

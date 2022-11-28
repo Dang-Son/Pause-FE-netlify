@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IMAGE_PLACEHOLDER_LINK } from "~/constants/constant";
 import { StyleTitleFont } from "./RecentlyPlayed";
 
 const AvatarNewTrack = styled.div`
@@ -8,7 +9,29 @@ const AvatarNewTrack = styled.div`
   border-radius: 50%;
   /* background-color: #000; */
   background-size: cover;
-  border: 1.5px solid gray;
+
+  .aaa {
+    filter: blur(1px);
+  }
+`;
+
+const StyledBorder = styled.div`
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px dashed black;
+  /* animation: rotation 7s infinite linear; */
+  transform: translateY(-100%);
+
+  /* @keyframes rotation {
+    from {
+      transform: translateY(-100%) rotate(0deg);
+    }
+    to {
+      transform: translateY(-100%) rotate(359deg);
+    }
+  } */
 `;
 
 const Name = styled.div`
@@ -23,11 +46,15 @@ const StyledNoti = styled.span`
 function NewTrack() {
   return (
     <div>
-      <AvatarNewTrack imageUrl="https://picsum.photos/500">
+      <AvatarNewTrack
+        className="position-relative"
+        imageUrl={IMAGE_PLACEHOLDER_LINK}
+      >
         <StyledNoti className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle aaa">
-          {/* <span class="visually-hidden">New alerts</span> */}
+          <span class="visually-hidden">New alerts</span>
         </StyledNoti>
       </AvatarNewTrack>
+      <StyledBorder />
       <Name>
         <StyleTitleFont>Name</StyleTitleFont>
       </Name>

@@ -35,18 +35,18 @@ function Document({ children, title }) {
         <Links />
         <script
           src="https://kit.fontawesome.com/6d6975ab12.js"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
         <link
           href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
           rel="stylesheet"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

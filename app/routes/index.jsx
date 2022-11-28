@@ -60,7 +60,7 @@ const StyledRightSide = styled.div`
   display: inline-block;
   width: 30%;
   padding-top: 15px;
-  height: 1000px;
+  height: auto;
   margin-left: 3rem;
   /* background-color: #000; */
 `;

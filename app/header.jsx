@@ -7,7 +7,7 @@ const StyledNav = styled.nav`
 
 function Header() {
   return (
-    <StyledNav className="navbar navbar-expand-lg bg-light header position-fixed top-0 w-100 p-2">
+    <StyledNav className="navbar navbar-expand-lg bg-light header fixed-top top-0 w-100 p-2">
       <div className="container-fluid">
         <a className="navbar-brand fw-bold" href="/">
           Pause
