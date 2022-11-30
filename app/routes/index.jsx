@@ -1,9 +1,18 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import styled from "styled-components";
 import ListSongs from "~/component/RecentlyPlayed";
 // import MoreSong from "~/component/MoreSong";
 // import RecentlyPlayed from "~/component/RecentlyPlayed";
 import Sidebar from "~/sidebar";
+
+export const loader = async () => {
+  const playList_url = "http://127.0.0.1:8000/api/song";
+  const response = await fetch(playList_url);
+  // console.log(response);
+  var data = await response.json();
+  // console.log(data);
+  return data;
+};
 
 const StyledLeftSide = styled.div`
   float: left;
@@ -66,11 +75,22 @@ const StyledRightSide = styled.div`
 `;
 
 function Index() {
+  // const { data } = useLoaderData();
+  // console.log("2", data);
+
   return (
     <>
       <StyledLeftSide>
         <StyledListRecentlyPlayed>
           <div className="fs-3 fw-semibold">Recently Played</div>
+          {/* {data.map((song) => (
+            <>
+              <li key={song.id}>
+                <h3>{song.artist}</h3>
+                <h3>{song.attributes.name}</h3>
+              </li>
+            </>
+          ))} */}
           <div className="section">
             <ul>
               <li>
