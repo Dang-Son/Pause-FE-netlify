@@ -1,387 +1,123 @@
-import { Link } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
+import LikedSongList from "~/component/Profile/LikedSongList";
+import PopularSongs from "~/component/Profile/PopularSongs";
+import { ARTIST, BACKEND_SERVER_LINK, USER_ID } from "~/constants/constant";
+import ProfileInfo from "../../component/Profile/ProfileInfo";
+export const loader = async () => {
+    const playList_url =
+        BACKEND_SERVER_LINK + "/user/" + USER_ID + "?include=songs,playlists";
+    const response = await fetch(playList_url);
+    var data = await response.json();
+
+    if (data.data.attributes.type == ARTIST) {
+        // Call another api
+    }
+    return data;
+};
+
+export function links() {
+    return [
+        {
+            rel: "stylesheet",
+            href: "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css",
+        },
+        {
+            rel: "stylesheet",
+            href: "assets/css/templatemo-cyborg-gaming.css",
+        },
+        {
+            rel: "stylesheet",
+            href: "assets/css/owl.css",
+        },
+
+        {
+            rel: "stylesheet",
+            href: "assets/css/animate.css",
+        },
+        {
+            rel: "stylesheet",
+            href: "https://unpkg.com/swiper@7/swiper-bundle.min.css",
+        },
+        {
+            rel: "stylesheet",
+            href: "assets/css/fontawesome.css",
+        },
+    ];
+}
 
 function ProfileIndex() {
-    return (
-        <>
-            {/* <!-- Additional CSS Files --> */}
-            <link rel="stylesheet" href="assets/css/fontawesome.css" />
-            <link
-                rel="stylesheet"
-                href="assets/css/templatemo-cyborg-gaming.css"
-            />
-            <link rel="stylesheet" href="assets/css/owl.css" />
-            <link rel="stylesheet" href="assets/css/animate.css" />
-            {/* <link
-                rel="stylesheet"
-                href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
-            /> */}
+    const loaderData = useLoaderData();
+    if (loaderData.data) {
+        const {
+            data: {
+                attributes: userInfo,
+                relationships: {
+                    liked_songs: { data: liked_songs_data },
+                    liked_playlists: { data: liked_playlists_data },
+                },
+            },
+        } = loaderData;
+        console.log(
+            "🚀 ~ file: index.jsx:59 ~ ProfileIndex ~ liked_playlists_data",
+            liked_playlists_data
+        );
 
-            {/* <!-- ***** Preloader Start ***** --> */}
-            <div id="js-preloader" className="js-preloader">
-                <div className="preloader-inner">
-                    <span className="dot"></span>
-                    <div className="dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
+        return (
+            <>
+                {/* <!-- Additional CSS Files --> */}
 
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="page-content">
-                            {/* <!-- ***** Banner Start ***** --> */}
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <div className="main-profile ">
-                                        <div className="row">
-                                            <div className="col-lg-4">
-                                                <img
-                                                    src="./assets/images/profile.jpg"
-                                                    alt=""
-                                                    style={{
-                                                        borderRadius: "23px",
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="col-lg-4 align-self-center">
-                                                <div className="main-info header-text">
-                                                    <span>Offline</span>
-                                                    <h4>Alan Smithee</h4>
-                                                    <p>
-                                                        You Haven't Gone Live
-                                                        yet. Go Live By Touching
-                                                        The Button Below.
-                                                    </p>
-                                                    <div className="main-border-button">
-                                                        <Link
-                                                            to="/profile"
-                                                            href="#"
-                                                        >
-                                                            Start Live Stream
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-lg-4 align-self-center">
-                                                <ul>
-                                                    <li>
-                                                        Games Downloaded{" "}
-                                                        <span>3</span>
-                                                    </li>
-                                                    <li>
-                                                        Friends Online{" "}
-                                                        <span>16</span>
-                                                    </li>
-                                                    <li>
-                                                        Live Streams{" "}
-                                                        <span>None</span>
-                                                    </li>
-                                                    <li>
-                                                        Clips <span>29</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-lg-12">
-                                                <div className="clips">
-                                                    <div className="row">
-                                                        <div className="col-lg-12">
-                                                            <div className="heading-section">
-                                                                <h4>
-                                                                    <em>
-                                                                        Your
-                                                                        Most
-                                                                        Popular
-                                                                    </em>{" "}
-                                                                    Clips
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-3 col-sm-6">
-                                                            <div className="item">
-                                                                <div className="thumb">
-                                                                    <img
-                                                                        src="assets/images/clip-01.jpg"
-                                                                        alt=""
-                                                                        style={{
-                                                                            borderRadius:
-                                                                                "23px",
-                                                                        }}
-                                                                    />
-                                                                    <Link
-                                                                        to="/profile"
-                                                                        href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-                                                                        target="_blank"
-                                                                    >
-                                                                        <i className="fa fa-play"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="down-content">
-                                                                    <h4>
-                                                                        First
-                                                                        Clip
-                                                                    </h4>
-                                                                    <span>
-                                                                        <i className="fa fa-eye"></i>{" "}
-                                                                        250
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-3 col-sm-6">
-                                                            <div className="item">
-                                                                <div className="thumb">
-                                                                    <img
-                                                                        src="assets/images/clip-02.jpg"
-                                                                        alt=""
-                                                                        style={{
-                                                                            borderRadius:
-                                                                                "23px",
-                                                                        }}
-                                                                    />
-                                                                    <Link
-                                                                        to="/profile"
-                                                                        href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-                                                                        target="_blank"
-                                                                    >
-                                                                        <i className="fa fa-play"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="down-content">
-                                                                    <h4>
-                                                                        Second
-                                                                        Clip
-                                                                    </h4>
-                                                                    <span>
-                                                                        <i className="fa fa-eye"></i>{" "}
-                                                                        183
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-3 col-sm-6">
-                                                            <div className="item">
-                                                                <div className="thumb">
-                                                                    <img
-                                                                        src="assets/images/clip-03.jpg"
-                                                                        alt=""
-                                                                        style={{
-                                                                            borderRadius:
-                                                                                "23px",
-                                                                        }}
-                                                                    />
-                                                                    <Link
-                                                                        to="/profile"
-                                                                        href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-                                                                        target="_blank"
-                                                                    >
-                                                                        <i className="fa fa-play"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="down-content">
-                                                                    <h4>
-                                                                        Third
-                                                                        Clip
-                                                                    </h4>
-                                                                    <span>
-                                                                        <i className="fa fa-eye"></i>{" "}
-                                                                        141
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-3 col-sm-6">
-                                                            <div className="item">
-                                                                <div className="thumb">
-                                                                    <img
-                                                                        src="assets/images/clip-04.jpg"
-                                                                        alt=""
-                                                                        style={{
-                                                                            borderRadius:
-                                                                                "23px",
-                                                                        }}
-                                                                    />
-                                                                    <Link
-                                                                        to="/profile"
-                                                                        href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-                                                                        target="_blank"
-                                                                    >
-                                                                        <i className="fa fa-play"></i>
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="down-content">
-                                                                    <h4>
-                                                                        Fourth
-                                                                        Clip
-                                                                    </h4>
-                                                                    <span>
-                                                                        <i className="fa fa-eye"></i>{" "}
-                                                                        91
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-lg-12">
-                                                            <div className="main-button">
-                                                                <Link
-                                                                    to="/profile"
-                                                                    href="#"
-                                                                >
-                                                                    Load More
-                                                                    Clips
-                                                                </Link>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                {/* <!-- ***** Preloader Start ***** --> */}
+                {/* <PreLoader /> */}
+
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="page-content">
+                                {/* <!-- ***** Banner Start ***** --> */}
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <div className="main-profile ">
+                                            <ProfileInfo
+                                                {...userInfo}
+                                                liked_songs={liked_songs_data}
+                                            />
+                                            <PopularSongs />
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {/* <!-- ***** Banner End ***** --> */}
+                                {/* <!-- ***** Banner End ***** --> */}
 
-                            {/* <!-- ***** Gaming Library Start ***** --> */}
-                            <div className="gaming-library profile-library">
-                                <div className="col-lg-12">
-                                    <div className="heading-section">
-                                        <h4>
-                                            <em>Your Gaming</em> Library
-                                        </h4>
-                                    </div>
-                                    <div className="item">
-                                        <ul>
-                                            <li>
-                                                <img
-                                                    src="assets/images/game-01.jpg"
-                                                    alt=""
-                                                    className="templatemo-item"
-                                                />
-                                            </li>
-                                            <li>
-                                                <h4>Dota 2</h4>
-                                                <span>Sandbox</span>
-                                            </li>
-                                            <li>
-                                                <h4>Date Added</h4>
-                                                <span>24/08/2036</span>
-                                            </li>
-                                            <li>
-                                                <h4>Hours Played</h4>
-                                                <span>634 H 22 Mins</span>
-                                            </li>
-                                            <li>
-                                                <h4>Currently</h4>
-                                                <span>Downloaded</span>
-                                            </li>
-                                            <li>
-                                                <div className="main-border-button border-no-active">
-                                                    <Link
-                                                        to="/profile"
-                                                        href="#"
-                                                    >
-                                                        Donwloaded
-                                                    </Link>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="item">
-                                        <ul>
-                                            <li>
-                                                <img
-                                                    src="assets/images/game-02.jpg"
-                                                    alt=""
-                                                    className="templatemo-item"
-                                                />
-                                            </li>
-                                            <li>
-                                                <h4>Fortnite</h4>
-                                                <span>Sandbox</span>
-                                            </li>
-                                            <li>
-                                                <h4>Date Added</h4>
-                                                <span>22/06/2036</span>
-                                            </li>
-                                            <li>
-                                                <h4>Hours Played</h4>
-                                                <span>745 H 22 Mins</span>
-                                            </li>
-                                            <li>
-                                                <h4>Currently</h4>
-                                                <span>Downloaded</span>
-                                            </li>
-                                            <li>
-                                                <div className="main-border-button border-no-active">
-                                                    <Link
-                                                        to="/profile"
-                                                        href="#"
-                                                    >
-                                                        Donwloaded
-                                                    </Link>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="item last-item">
-                                        <ul>
-                                            <li>
-                                                <img
-                                                    src="assets/images/game-03.jpg"
-                                                    alt=""
-                                                    className="templatemo-item"
-                                                />
-                                            </li>
-                                            <li>
-                                                <h4>CS-GO</h4>
-                                                <span>Sandbox</span>
-                                            </li>
-                                            <li>
-                                                <h4>Date Added</h4>
-                                                <span>21/04/2022</span>
-                                            </li>
-                                            <li>
-                                                <h4>Hours Played</h4>
-                                                <span>632 H 46 Mins</span>
-                                            </li>
-                                            <li>
-                                                <h4>Currently</h4>
-                                                <span>Downloaded</span>
-                                            </li>
-                                            <li>
-                                                <div className="main-border-button border-no-active">
-                                                    <Link
-                                                        to="/profile"
-                                                        href="#"
-                                                    >
-                                                        Donwloaded
-                                                    </Link>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                {/* <!-- ***** Gaming Library Start ***** --> */}
+                                <div className="gaming-library profile-library">
+                                    <div className="col-lg-12">
+                                        <div className="heading-section">
+                                            <h4>
+                                                <em>Your Gaming</em> Library
+                                            </h4>
+                                        </div>
+                                        <LikedSongList
+                                            liked_songs_data={liked_songs_data}
+                                        />
                                     </div>
                                 </div>
+                                {/* <!-- ***** Gaming Library End ***** --> */}
                             </div>
-                            {/* <!-- ***** Gaming Library End ***** --> */}
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* <!-- Scripts --> */}
-            {/* <!-- Bootstrap core JavaScript --> */}
-
-            <script src="assets/js/isotope.min.js"></script>
-            <script src="assets/js/owl-carousel.js"></script>
-            <script src="assets/js/tabs.js"></script>
-            <script src="assets/js/popup.js"></script>
-            <script src="assets/js/custom.js"></script>
-        </>
-    );
+                {/* <!-- Scripts --> */}
+                {/* <!-- Bootstrap core JavaScript --> */}
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                <script src="assets/js/isotope.min.js"></script>
+                <script src="assets/js/owl-carousel.js"></script>
+                <script src="assets/js/tabs.js"></script>
+                <script src="assets/js/popup.js"></script>
+                <script src="assets/js/custom.js"></script>
+            </>
+        );
+    }
+    return undefined;
 }
 
 export default ProfileIndex;
