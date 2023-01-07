@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.branch-name {
+    font-family: "Pacifico", cursive;
+}
+
+body {
+    background: #fdf4ec;
+    font-family: "Montserrat", sans-serif;
+}
+
+.font-cursive {
+    font-family: "Pacifico", cursive;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.html222 {
+    scrollbar-color: #ff883e #e0e0e0;
+    scrollbar-width: thin;
+}
