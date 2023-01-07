@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 function MenuItem({ children, text, onClick, activeItem, setActiveItem }) {
     const StyledMenuItem = styled.li`
+        font-size: 15px;
+
         list-style-type: none;
         cursor: pointer;
         svg {
@@ -10,11 +12,11 @@ function MenuItem({ children, text, onClick, activeItem, setActiveItem }) {
             height: 20px;
             margin-right: 10px;
             opacity: 0.9;
-            color: ${(props) => (props.isActive ? `#ff883e` : `#000000a7`)};
+            color: ${(props) => (props.isActive ? `#ff883e` : `#7C8DB5`)};
         }
 
         span {
-            color: ${(props) => (props.isActive ? `#ff883e` : `#000000a7`)};
+            color: ${(props) => (props.isActive ? `#ff883e` : `#7C8DB5`)};
             opacity: 0.8;
             font-weight: ${(props) => (props.isActive ? "bolder" : "normal")};
         }
@@ -30,7 +32,7 @@ function MenuItem({ children, text, onClick, activeItem, setActiveItem }) {
         <Link to={`/${link}`}>
             <StyledMenuItem
                 isActive={activeItem === text}
-                className="my-4"
+                className="my-3"
                 onClick={() => {
                     setActiveItem(text);
                 }}

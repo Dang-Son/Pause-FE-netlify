@@ -1,7 +1,5 @@
-import SuperSong from "../../component/SuperSong/SuperSong";
-
 function SongRoute() {
-    return <SuperSong />;
+    return <div></div>;
 }
 
 export default SongRoute;

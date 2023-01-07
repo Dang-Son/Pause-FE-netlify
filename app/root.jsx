@@ -36,11 +36,11 @@ export default function App() {
             </head>
             <body>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-2">
                         <Header />
                     </div>
 
-                    <div className="col-8">
+                    <div className="col-10">
                         <Outlet />
                     </div>
                 </div>

@@ -11,15 +11,16 @@ import {
     DevicePhoneMobileIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import { Link } from "@remix-run/react";
 
 function Header() {
     const StyledHeader = styled.header`
         position: fix;
         padding-left: 20px;
         padding-top: 10px;
-        height: 800px;
+        height: 100vh;
         background: white;
-        border-right: 3.5px solid rgba(255, 115, 0, 0.2); ;
+        border-right: 3.5px solid rgba(255, 115, 0, 0.2);
     `;
 
     const StyledBranch = styled.span`
@@ -34,6 +35,7 @@ function Header() {
     const StyledNavMenu = styled.div`
         h5 {
             margin-top: 40px;
+            opacity: 0.7;
         }
 
         ul {
@@ -53,7 +55,9 @@ function Header() {
 
     return (
         <StyledHeader className="header-area header-sticky sticky-top shadow-sm">
-            <StyledBranch className="branch-name">Sparingly</StyledBranch>
+            <Link to="/">
+                <StyledBranch className="branch-name">Sparingly</StyledBranch>
+            </Link>
 
             {/* NavMenu */}
             <StyledNavMenu>
